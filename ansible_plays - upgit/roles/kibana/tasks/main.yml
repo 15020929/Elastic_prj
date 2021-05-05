@@ -1,0 +1,10 @@
+---
+# tasks file for elastic search
+
+- name: Include task list in play
+  import_tasks: setup.yml
+- name: Include task list in play
+  import_tasks: sysconfig.yml
+- name: Include task list in play
+  import_tasks: scripted_field_setup.yml
+  when: mpbn_ip_rm_host.stdout == "server_ip"

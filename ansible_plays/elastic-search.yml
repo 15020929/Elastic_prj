@@ -1,0 +1,9 @@
+---
+# This playbook deploys the whole application stack in this site.
+
+- name: configure and deploy the elasticsearch and application code
+  hosts: elastic_search
+  become_user: root
+  roles:
+    - common
+    - elastic-search

@@ -1,0 +1,22 @@
+# kibana userpasswd linux
+kibana_passwd: 123456a@
+# kibana web user/pass
+kibana_web_user: kibana_system
+kibana_web_passwd: kibana@123
+# kibana data,logs path
+kibana_data_path: /u01/kibana/kibana/data/
+kibana_log_path: /u02/kibana/kibana/logs/kibana.log
+
+# kibana instace setup
+server_ip: 172.16.30.129
+server_port: 5601
+server_list:
+  - kibana01:
+    server_port: 5601
+    server_host: 10.60.143.75
+    server_name: Kibana-ELK-OCS-01
+  - kibana02:
+    server_port: 5601
+    server_host: 10.60.143.76
+    server_name: Kibana-ELK-OCS-02
+
