@@ -1,0 +1,45 @@
+- name: create user, copy setup file and install kibana
+  block: 
+    - name: create user kibana if not exist
+      ansible.builtin.user:
+        name: kibana
+        password: "{{ kibana_passwd }}"
+      ignore_errors: yes
+
+    - name: create kibana folder
+      shell: |
+        mkdir -p /u02/elasticsearch/kibana;
+        chown -R kibana:kibana /u02/elasticsearch/kibana;
+      ignore_errors: yes
+      
+    - name: Copy file with owner and permissions
+      copy:
+        src: "{{ item }}"
+        dest: /u02/elasticsearch/kibana/
+        owner: kibana
+        group: kibana
+      with_fileglob: "*.rpm"
+      register: rpm_setup_files
+
+    - name: Allow user to have sudo
+      lineinfile:
+        dest: /etc/sudoers
+        state: present
+        regexp: '^kibana'
+        line: 'kibana ALL=(ALL) ALL'
+        validate: visudo -cf %s
+
+    - name: install kibana
+      yum:
+        name: "{{ item }}"
+        state: present
+      with_items: "{{ rpm_setup_files.results | map(attribute='dest') | list }}"
+
+    - name: copy setup file
+      shell: |
+        cp /etc/kibana/kibana.yml /etc/kibana/kibana.yml_org;
+
+  become: true
+  become_user: root
+  tags:
+    - setup

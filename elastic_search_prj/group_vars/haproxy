@@ -1,0 +1,6 @@
+# haproxy userpasswd linux
+haproxy_passwd: 123456a@
+# haproxy web user/pass
+haproxy_web_user: haproxy
+haproxy_web_passwd: haproxy@123
+elastic_bind_proxy: 10.60.143.100:8200

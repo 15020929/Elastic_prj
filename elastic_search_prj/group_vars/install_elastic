@@ -1,0 +1,28 @@
+host_lists:
+  - cluster01:
+    name: vOCS-ES01
+    node_ip: 10.60.143.75
+    mpbn_ip: "1.1.9.75"
+    is_master: 1
+    cluster_init_master_nodes:  ["vOCS-ES01", "vOCS-ES02", "vOCS-ES03"]
+  - cluster02:
+    name: vOCS-ES02
+    node_ip: 10.60.143.76
+    mpbn_ip: "1.1.9.76"
+    is_master: 0
+  - cluster03:
+    name: vOCS-ES03
+    node_ip: 10.60.143.77
+    mpbn_ip: "1.1.9.77"
+    is_master: 0
+  - cluster04:
+    name: vOCS-ES04
+    node_ip: 10.60.143.78
+    mpbn_ip: "1.1.9.78"
+    is_master: 0
+  - cluster05:
+    name: vOCS-ES05
+    node_ip: 10.60.143.79
+    mpbn_ip: "1.1.9.79"
+    is_master: 0
+http_port: 9200

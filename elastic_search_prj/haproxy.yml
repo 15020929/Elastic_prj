@@ -1,0 +1,9 @@
+---
+# This playbook deploys the whole application stack in this site.
+
+- name: configure and deploy the haproxy
+  hosts: kibana
+  become_user: root
+  roles:
+    - common
+    - haproxy

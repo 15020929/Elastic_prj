@@ -1,0 +1,22 @@
+#jinja2: lstrip_blocks: "True (or False)", trim_blocks: "True (or False)"
+{% set mpbn_ip_list = [] %}
+cluster.name: E-vOCSLog
+{% for host in host_lists %}
+{{mpbn_ip_list.append(host.mbpn_ip)}}
+{% if mpbn_ip_rm_host.stdout == host.node_ip %}
+node.name: {{ host.name }}
+network.host: {{ host.node_ip }}
+http.port: {{ http_port }}
+{% if host.is_master == 1 %}
+cluster.initial_master_nodes: {{ host.cluster_init_master_nodes | to_json }}
+{% endif %}
+transport.host: {{ host.mpbn_ip }}
+transport.port: {{ transport_port }}
+{% endif %}
+{% endfor %}
+path.data: /data1, /data2, /data3, /data4, /data5, /data6, /data7, /data8, /data9, /data10, /data11, /data12, /data13, /data14, /data15, /data16, /data17, /data18, /data19, /data20, /data21, /data22
+path.logs: /u02/elasticsearch/elasticsearch/logs
+discovery.seed_hosts: [{{'\"' + mpbn_ip_list|join('\", \"') + '\"' }}]
+bootstrap.memory_lock: true
+#xpack.security.enabled: true
+#xpack.security.transport.ssl.enabled: true

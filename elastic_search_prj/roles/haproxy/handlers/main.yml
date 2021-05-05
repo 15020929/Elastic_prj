@@ -1,0 +1,20 @@
+---
+# handlers file for elastic-search
+- name: reload systemd
+  ansible.builtin.systemd:
+    daemon_reload: yes
+
+- name: enable start-up
+  ansible.builtin.systemd:
+    name: haproxy.service
+    enabled: yes
+
+- name: restart rsyslog
+  service:
+    name: rsyslog
+    state: restarted
+
+- name: restart haproxy
+  service:
+    name: kibana
+    state: restarted

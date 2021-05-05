@@ -1,0 +1,8 @@
+{
+    "index_patterns": ["{{ item.name }}*"],
+    "template": {
+        "settings": {
+            "index.lifecycle.name": "{{ item.policy }}"
+        }
+    }
+}

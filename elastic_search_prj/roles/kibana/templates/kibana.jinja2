@@ -1,0 +1,20 @@
+#jinja2: lstrip_blocks: "True (or False)", trim_blocks: "True (or False)"
+{% for server in server_list %}
+{% if mpbn_ip_rm_host.stdout == server.server_host %}
+server.port: {{ server.server_port }}
+server.host: {{ server.server_host }}
+server.name: {{ server.server_name }}
+elasticsearch.hosts: {{ elastic_bind_proxy }}
+{% endif %}
+{% endfor %}
+path.data: {{ kibana_data_path }}
+logging.dest: {{ kibana_log_path }}
+logging.verbose: true
+logging.rotate:
+    enabled: true
+    everyBytes: 10485760
+    keepFiles: 10
+elasticsearch.username: "{{ kibana_web_user }}"
+elasticsearch.password: "{{ kibana_web_passwd }}"
+xpack.security.session.idleTimeout: "30m"
+xpack.security.session.lifespan: "10d"
