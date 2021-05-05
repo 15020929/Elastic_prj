@@ -1,9 +1,0 @@
-{
-  "attributes":{
-    "fieldAttrs":"{}",
-    "title":"{{ item.name }}",
-    "fields":"[{\"count\":0,\"script\":\"{{ item.scripted_field | replace('\n', '\\n') }}\",\"lang\":\"painless\",\"name\":\"{{ item.scripted_name }}\",\"type\":\"string\",\"scripted\":true,\"searchable\":true,\"aggregatable\":true,\"readFromDocValues\":false}]",
-    "fieldFormatMap":"{\"{{ item.scripted_name }}\":{\"id\":\"string\",\"params\":{\"parsedUrl\":{\"origin\":\"http://{{ server_ip }}:{{ server_port }}\",\"basePath\":\"\"},\"pattern\":\"0,0.[000]\"}}}",
-    "runtimeFieldMap":"{}"
-  }
-}

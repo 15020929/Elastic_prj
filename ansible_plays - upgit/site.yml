@@ -1,4 +1,0 @@
----
-# This playbook deploys the whole application stack in this site.
-
-- import_playbook: elastic-search.yml
